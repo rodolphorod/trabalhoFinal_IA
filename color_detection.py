@@ -55,7 +55,7 @@ while True:
 
     # Get webcam frame
     _, frame = vidCapture.read()
-
+    #modificacao para commit
     # Show the original image.
     #cv2.imshow('frame', frame)
     # Convert the frame to HSV colour model.
