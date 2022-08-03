@@ -72,7 +72,7 @@ while True:
     mask = cv2.inRange(frameHSV, colorLow, colorHigh)
     # Show the first mask
     cv2.rectangle(frame,(159,119),(160,120),(0,255,0),2)
-    cv2.imshow('mask-plain', mask)
+    #cv2.imshow('mask-plain', mask)
 
     
     contours = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
@@ -119,7 +119,7 @@ while True:
 #             line = ser.readline().decode('utf-8').rstrip()
 #             print(line)
     #sleep(1)
-    cv2.imshow('colorTest', frame)
+    #cv2.imshow('colorTest', frame)
     
     k = cv2.waitKey(5) & 0xFF
     if k == 27:
