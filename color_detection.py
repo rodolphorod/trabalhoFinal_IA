@@ -90,8 +90,9 @@ while True:
         pontoX = int((centroX[0]+2*centroX[1]+3*centroX[2]+4*centroX[3]+5*centroX[4])/15)
         pontoY = int((centroY[0]+2*centroY[1]+3*centroY[2]+4*centroY[3]+5*centroY[4])/15)
 #             pontoY = int(sum(centroY)/len(centroY))
-        saidaX = int((FRAME_WIDTH/2 - pontoX)/2)
-        saidaY = int((FRAME_HEIGHT/2-pontoY)/2)
+        saidaX = int((FRAME_WIDTH/2 - pontoX)/3)
+        saidaY = int((FRAME_HEIGHT/2-pontoY)/3)
+        #divisao/3  = x:90 y:60
         #print(F' {len(centroX)} ({saidaX},{saidaY})')
         centroX.pop(0)
         centroY.pop(0)
@@ -101,13 +102,14 @@ while True:
         i=i+1
         if(time.time()-timeCheck >0.5):
             ser.reset_input_buffer()
-            c = f'{saidaX} {saidaY}'
+            
+            c = f'{"+" if(saidaX>0) else ""}{saidaX} {"+" if(saidaY>0) else ""}{saidaY}'
 
             ser.write(c.encode('utf-8'))
             print (c)
             ser.write('\n'.encode('utf-8'))
             timeCheck = time.time()
-            print(timeCheck)
+#             print(timeCheck)
     
     
     # Show final output image
@@ -119,7 +121,7 @@ while True:
 #             line = ser.readline().decode('utf-8').rstrip()
 #             print(line)
     #sleep(1)
-    #cv2.imshow('colorTest', frame)
+    cv2.imshow('colorTest', frame)
     
     k = cv2.waitKey(5) & 0xFF
     if k == 27:
